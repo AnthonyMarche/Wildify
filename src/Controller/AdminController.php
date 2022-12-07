@@ -10,8 +10,8 @@ class AdminController extends AbstractTwigController
 {
     public function showAllUsers(): string
     {
-        $adminManager = new AdminManager();
-        $users = $adminManager->getAllUsers();
+        $userManager = new UserManager();
+        $users = $userManager->getAllUsers();
 
         return $this->twig->render('Setting/Admin/admin.html.twig', ['users' => $users]);
     }
@@ -64,13 +64,14 @@ class AdminController extends AbstractTwigController
         return $this->twig->render('Setting/Admin/admin-delete-music.html.twig', ['music' => $music]);
     }
 
-    public function deleteMusic($id): void
+    public function deleteMusic(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $id = trim($_GET['id']);
             $id = intval($id);
-            $adminManager = new AdminManager();
-            $adminManager->deleteOneMusic($id);
+            $songManager = new SongManager();
+            $songManager->deleteLikeFromSongId($id);
+            $songManager->deleteSongbyId($id);
 
             header('Location: /setting/admin/manageMusics');
         }

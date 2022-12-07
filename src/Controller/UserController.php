@@ -121,11 +121,10 @@ class UserController extends AbstractTwigController
     /**
      * User registration
      */
-    public function index()
+    public function registration()
     {
         $registrationManager = new UserManager();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // clean $_POST data
             $user = array_map('trim', $_POST);
             $errors = [];
             if (empty($_POST["username"])) {
@@ -137,7 +136,6 @@ class UserController extends AbstractTwigController
             if (empty($_POST["password"])) {
                 $errors[] = "Password is required";
             }
-        //TODO le coup de password doesn't match
             if ((empty($_POST["passwordConfirmation"])) || ($_POST["passwordConfirmation"] !== $_POST["password"])) {
                 $errors[] = "Passwords doesn't match";
             }

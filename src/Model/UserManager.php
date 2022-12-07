@@ -36,6 +36,18 @@ class UserManager extends Connection
     }
 
     /**
+     * Get information for all user
+     */
+    public function getAllUsers(): array
+    {
+        $sql = "SELECT ID_user, username, email FROM user";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
+
+    /**
      * Get email + password to verify in database
      */
     public function login($email, $password)
