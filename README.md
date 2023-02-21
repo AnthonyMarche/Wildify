@@ -16,7 +16,7 @@ The main objective for the team was to build a website mostly inspired by Spotif
 - Teamwork (Agile Scrum method, Git WorkFlow)
 - ...
 
-## The team (a.k.a. "The Avengers")
+## The team
 - Hélène Fourcade
 - Alexis Boucherie
 - Andy Ricana
